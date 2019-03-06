@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+
+<!-- tiles는 뷰(회면에 보여지는것)에 대한 정보 -->       
+<tiles-definitions>
+
+	<!-- 컨트롤러쪽에서 반환되는 MainIndex에 대한 설정 -->
+	<definition name = "mainIndex" template="/WEB-INF/view/main/template/layout.jsp">
+		<!-- layout.jsp에 들어갈 페이지들을 설정 -->
+		<!-- put-attribute는 layout.jsp에 어디에 들어가야 하는지를 설정 -->
+		<put-attribute name="header" value = "/WEB-INF/view/main/template/header.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/view/main/mainBody.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/view/main/template/footer.jsp" />
+		<put-attribute name="chat" value="/WEB-INF/view/main/template/qnaChatting.jsp"/>
+	</definition>
+	
+	<!-- 컨트롤러쪽에서 반환되는 discStart에 대한 설정 -->
+	<!-- 앞에 있는 layout.jsp를 그대로 사용하고 다르게 설정할 부분만 재정의할 것 -->
+	<!-- 이 경우 template을 지정해주는 것이 아니라 extends를 사용 -->
+	<definition name = "discStart" extends="mainIndex">
+		<put-attribute name="body" value="/WEB-INF/view/disc/discstart.jsp"/>
+	</definition>
+	
+	<!-- 컨트롤러쪽에서 반환되는 discTest에 대한 설정 -->
+	<definition name = "discTest" extends="mainIndex">
+		<put-attribute name="body" value="/WEB-INF/view/disc/disctest.jsp"/>
+	</definition>
+	
+	<!-- 컨트롤러쪽에서 반환되는 discEnd에 대한 설정 -->
+	<definition name = "discEnd" extends="mainIndex">
+		<put-attribute name="body" value="/WEB-INF/view/disc/discend.jsp"/>
+	</definition>
+	
+
+</tiles-definitions>
